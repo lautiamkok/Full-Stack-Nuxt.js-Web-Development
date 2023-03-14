@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build --dotenv .env.production",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate --dotenv .env.production",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "^3.2.3"
+  }
+}
