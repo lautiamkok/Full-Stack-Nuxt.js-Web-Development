@@ -83,7 +83,7 @@ If you are also interested in the preceding Vue.js essential knowledge and skill
 * Installing and securing MySQL, MongoDB, and RethinkDB
 * Installing and configuring Apache, PHP, and WordPress
 
-If you are also interested in the preceding general knowledge and skills for Nuxt.js applications, please consider [*Hands-on Nuxt.js Web Development*](https://www.packtpub.com/product/hands-on-nuxtjs-web-development/9781789952698) too in your learning journey. *Advanced Nuxt.js Web Development* assumes you have the preceding basic knowledge and skills already. Composition API and `<script setup>` are used solely throughout the course. In other words, [Options API](https://vuejs.org/api/#options-api) `<script>` are considered basic in this course so they are opted out entirely from the course.
+If you are also interested in the preceding general knowledge and skills for Nuxt.js applications, please consider [*Hands-on Nuxt.js Web Development*](https://www.packtpub.com/product/hands-on-nuxtjs-web-development/9781789952698) too in your learning journey. *Advanced Nuxt.js Web Development* assumes you have the preceding basic knowledge and skills already. Composition API and `<script setup>` are used solely throughout the course. In other words, [Options API](https://vuejs.org/api/#options-api) and `<script>` are considered basic in this course so they are opted out entirely from the course.
 
 ## Takeaway Skills
 
