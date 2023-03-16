@@ -6,7 +6,7 @@ This is the code repository for *Advanced Nuxt.js Web Development*, coming soon 
 
 ## Course Overview
 
-This repository is the successor of [*Hands-on Nuxt.js Web Development*](https://github.com/PacktPublishing/Hands-on-Nuxt.js-Web-Development), which you can purchase the book from [packtpub.com](https://www.packtpub.com/product/hands-on-nuxtjs-web-development/9781789952698). If you have owned the book already, which is based on Nuxt.js 2, and would like to upgrade to Nuxt.js 3 and update the old NPM packages, frameworks, and tools, please use this repository to do so. However, bear in mind that the following dependencies and skills that are covered in *Hands-on Nuxt.js Web Development* are not included in this repository and course:
+This repository is the successor of [*Hands-on Nuxt.js Web Development*](https://github.com/PacktPublishing/Hands-on-Nuxt.js-Web-Development). You can purchase the book of *Hands-on Nuxt.js Web Development* from [packtpub.com](https://www.packtpub.com/product/hands-on-nuxtjs-web-development/9781789952698). If you have owned the book already, which is based on Nuxt.js 2, and would like to upgrade to Nuxt.js 3 and update the old NPM packages, frameworks, and tools, please use this repository to do so. However, bear in mind that the following dependencies and skills that are covered in *Hands-on Nuxt.js Web Development* are not included in this repository and course:
 
 * Webpack
 * Backpack
@@ -30,7 +30,7 @@ This repository is the successor of [*Hands-on Nuxt.js Web Development*](https:/
 * [Nuxt modules](https://nuxt.com/docs/guide/going-further/modules)
 * [Testing](https://nuxt.com/docs/getting-started/testing)
 
-Testing in Nuxt.js 3 is still in development. The APIs and behaviors for testing your Nuxt.js applications may change in the near future. So testing will not be included in this course. For more info about testing in Nuxt.js 3, please check it out at [https://nuxt.com/docs/getting-started/testing](https://nuxt.com/docs/getting-started/testing). However, the following NPM packages, frameworks, tools, and skills are included and used tightly in this course (items marked with * are not covered in *Hands-on Nuxt.js Web Development*):
+Testing in Nuxt.js 3 is still in development. The APIs and behaviors for testing your Nuxt.js applications may change in the near future. So testing will not be included in this course. For more info about testing in Nuxt.js 3, please check it out at [https://nuxt.com/docs/getting-started/testing](https://nuxt.com/docs/getting-started/testing). However, the following NPM packages, frameworks, and tools are included and used tightly in this course (items marked with * are not covered in *Hands-on Nuxt.js Web Development*):
 
 * Vite*
 * Nitro*
@@ -95,7 +95,7 @@ If you are also interested in the preceding general knowledge and skills for Nux
 
 * Create responsive layouts with Windi CSS and Less
 
-* Handle static and dynamic assets
+* Handle static and dynamic assets using composables
 
 * Create a data-persistent shopping cart system with Pinia
 
@@ -105,7 +105,7 @@ If you are also interested in the preceding general knowledge and skills for Nux
 
 * Create real-time Nuxt.js applications with Socket.IO, RethinkDB, and h3
 
-* Use WordPress as a headless CMS
+* Create a headless CMS using WordPress
 
 * Connect WordPress and generate static pages
 
