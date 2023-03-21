@@ -4,7 +4,7 @@
 
 This is the code repository for *Advanced Nuxt.js Web Development*, coming soon in 2023, authored by [Lau Tiam Kok](https://lauthiamkok.net/). For the time being, if you are interested in this course and have questions, please visit [lauthiamkok.net](https://lauthiamkok.net) to contact me. Otherwise, feel free to sponsor this repository to keep it going and maintained through the following channels:
 
-* [Open Collective](https://opencollective.com/lautiamkoka)
+* [Open Collective](https://opencollective.com/lautiamkok)
 * [Ko-fi](https://ko-fi.com/lautiamkok)
 
 ## Course Overview
