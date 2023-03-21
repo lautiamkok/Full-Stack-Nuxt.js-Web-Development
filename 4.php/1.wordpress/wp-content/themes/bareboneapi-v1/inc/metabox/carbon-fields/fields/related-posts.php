@@ -4,7 +4,7 @@ use Carbon_Fields\Field;
 
 // Related Posts metabox.
 add_action('carbon_fields_register_fields', 'crb_attach_post_meta_related_posts');
-function crb_attach_post_meta_related_posts () {
+function crb_attach_post_meta_related_posts() {
     Container::make('post_meta', __('Related Posts'))
         ->where('post_id', 'NOT IN', [
             get_option('page_on_front')

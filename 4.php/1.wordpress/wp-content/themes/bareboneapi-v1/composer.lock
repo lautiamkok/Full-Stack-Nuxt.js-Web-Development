@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6bd8433a80615a7d91d72f40f38d653",
+    "content-hash": "fa22f14635987f26112f1c1ff04cf6af",
     "packages": [
         {
             "name": "htmlburger/carbon-field-number",
@@ -66,24 +66,25 @@
         },
         {
             "name": "htmlburger/carbon-fields",
-            "version": "v3.3.4",
+            "version": "v3.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/htmlburger/carbon-fields.git",
-                "reference": "2ae6773c004b873a1b0456613b14852c1a436a96"
+                "reference": "fe95143dc8db6b9b0f17b1a0c4d28aab98008470"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/carbon-fields/zipball/2ae6773c004b873a1b0456613b14852c1a436a96",
-                "reference": "2ae6773c004b873a1b0456613b14852c1a436a96",
+                "url": "https://api.github.com/repos/htmlburger/carbon-fields/zipball/fe95143dc8db6b9b0f17b1a0c4d28aab98008470",
+                "reference": "fe95143dc8db6b9b0f17b1a0c4d28aab98008470",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3"
+                "php": ">=5.6.20"
             },
             "require-dev": {
-                "mockery/mockery": "^0.9.7",
-                "phpunit/phpunit": "~4.8"
+                "mockery/mockery": "1.3.6",
+                "phpunit/phpunit": "7.5.20|9.6.3",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -201,7 +202,7 @@
                 "issues": "https://github.com/htmlburger/carbon-fields/issues",
                 "source": "https://github.com/htmlburger/carbon-fields"
             },
-            "time": "2022-05-05T14:49:59+00:00"
+            "time": "2023-03-10T09:21:11+00:00"
         }
     ],
     "packages-dev": [],

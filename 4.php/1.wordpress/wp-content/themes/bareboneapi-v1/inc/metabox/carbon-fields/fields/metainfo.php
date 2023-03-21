@@ -4,7 +4,7 @@ use Carbon_Fields\Field;
 
 // SEO metabox.
 add_action('carbon_fields_register_fields', 'crb_attach_post_meta_seo_contents');
-function crb_attach_post_meta_seo_contents () {
+function crb_attach_post_meta_seo_contents() {
     Container::make('post_meta', __('Meta Contents'))
         // ->where('post_type', '=', 'page')
         // ->or_where(function($condition) {

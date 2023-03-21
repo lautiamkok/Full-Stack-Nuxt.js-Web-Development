@@ -2,171 +2,166 @@
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
-// Abstract fields (for image) to be reuse.
-function add_crb_image_group($options = []) {
-    $fields = [];
-    $defaults = [
-        'id', 
-        'title', 
-        'description'
+// Abstract fields to be reuse.
+function add_crb_album_fields(
+    $name = 'album', 
+    $id = 'albums', 
+    $options = []
+) {
+    return [
+        Field::make('complex', $id, '')
+            ->set_help_text("Use this section to add multiple sets of $name. Meta ID: $id.")
+            ->set_layout('tabbed-horizontal')
+
+            ->add_fields('gallery',  [
+                Field::make('media_gallery', 'gallery', __(''))
+                    ->set_help_text('Add a gallery (images/videos) to this set. Meta ID: gallery.')
+                    ->set_type(['image', 'video']),
+            ])
+
+            ->add_fields('assets',  [
+                Field::make('complex', 'assets', __(''))
+                    ->set_help_text('Add complex assets (images/videos) to this set. Meta ID: assets.')
+                    ->set_layout('tabbed-vertical')
+                    ->add_fields(add_crb_asset_fields($options)),
+            ])
+
+            ->add_fields('complex', [
+                Field::make('text', 'title', __('Title'))
+                    ->set_help_text('Set a title to this set.')
+                    ->set_width(100),
+
+                Field::make('rich_text', 'description', __('Description'))
+                    ->set_help_text('Set a description to this set.')
+                    ->set_width(100)
+                    ->set_rows(8)
+                    ->set_settings(array(
+                        'media_buttons' => false
+                   )),
+
+                Field::make('complex', 'assets', 'Assets')
+                    ->set_help_text('Set assets to this set.')
+                    ->set_max(1)
+
+                    ->add_fields('gallery',  [
+                        Field::make('media_gallery', 'gallery', __(''))
+                            ->set_help_text('Add a gallery (images/videos). Meta ID: gallery.')
+                            ->set_type(['image', 'video']),
+                    ])
+
+                    ->add_fields('complex',  [
+                        Field::make('complex', 'complex', __(''))
+                            ->set_help_text('Add complex assets (images/videos). Meta ID: complex.')
+                            ->set_layout('tabbed-vertical')
+                            ->add_fields(add_crb_asset_fields($options)),
+                    ])
+            ])
+
     ];
-    $picked = array_merge($defaults, $options);
-
-    $id = Field::make('image', 'id', 'Image')
-        ->set_help_text('Upload an image file. Meta ID: id.');
-
-    $title = Field::make('text', 'title', __('Title'))
-        ->set_help_text('Set a plain-text title to this image. Meta ID: title.')
-        ->set_width(100);
-
-    $description = Field::make('textarea', 'description', __('Description'))
-        ->set_help_text('Set a rich-text description to this image. Meta ID: description.')
-        ->set_rows(3);
-
-    $caption = Field::make('rich_text', 'caption', __('Caption'))
-        ->set_help_text('Set a rich-text caption to this image. Meta ID: caption.')
-        ->set_rows(8)
-        ->set_settings([
-            'media_buttons' => false
-        ]);
-
-    $credit = Field::make('rich_text', 'credit', __('Credit'))
-        ->set_help_text('Set a rich-text credit to this image.')
-        ->set_rows(8)
-        ->set_settings([
-            'media_buttons' => false
-        ]);
-
-    $size = Field::make('select', 'size', __('Size'))
-        ->set_help_text('Set a grid size to this image for large screens. Meta ID: size.')
-        ->set_options(set_grid_size_options());
-
-    $position = Field::make('select', 'top', __('Top Position'))
-        ->set_help_text('Set a top position to this image in percentage.')
-        ->set_options(set_percentage_options());
-
-    // https://docs.carbonfields.net/learn/fields/color.html#config-methods
-    $filter = Field::make('color', 'filter', 'Filter')
-        ->set_help_text('Set a transparent colour layer over this image. Meta ID: filter.')
-        ->set_alpha_enabled(true);
-
-    $associate = Field::make('association', 'associate', __('Associate'))
-        ->set_help_text('Set a link to this image to a local page.')
-        ->set_max(1)
-        ->set_types(set_all_available_post_types());
-
-    $remote_url = Field::make('text', 'remote_url', __('Remote URL'))
-        ->set_help_text('Set a remote link to this image. Meta ID: remote_url.')
-        ->set_width(100);
-
-    if (in_array('id', $picked)) {
-        $fields[] = $id;
-    }
-    if (in_array('title', $picked)) {
-        $fields[] = $title;
-    }
-    if (in_array('description', $picked)) {
-        $fields[] = $description;
-    }
-    if (in_array('caption', $picked)) {
-        $fields[] = $caption;
-    }
-    if (in_array('size', $picked)) {
-        $fields[] = $size;
-    }
-    if (in_array('position', $picked)) {
-        $fields[] = $position;
-    }
-    if (in_array('filter', $picked)) {
-        $fields[] = $filter;
-    }
-    if (in_array('associate', $picked)) {
-        $fields[] = $associate;
-    }
-    if (in_array('remote_url', $picked)) {
-        $fields[] = $remote_url;
-    }
-
-    return $fields;
-
-    // return [
-    //     Field::make('image', 'id', 'Image')
-    //         ->set_help_text('Upload an image file. Meta ID: id.'),
-
-    //     Field::make('text', 'title', __('Title'))
-    //         ->set_help_text('Set a plain-text title to this image. Meta ID: title.')
-    //         ->set_width(100),
-
-    //     Field::make('textarea', 'description', __('Description'))
-    //         ->set_help_text('Set a rich-text description to this image. Meta ID: description.')
-    //         ->set_rows(4),
-
-    //     Field::make('rich_text', 'caption', __('Caption'))
-    //         ->set_help_text('Set a rich-text caption to this image. Meta ID: caption.')
-    //         ->set_rows(8)
-    //         ->set_settings([
-    //             'media_buttons' => false
-    //         ]),
-
-    //     Field::make('rich_text', 'credit', __('Credit'))
-    //         ->set_help_text('Set a rich-text credit to this image.')
-    //         ->set_rows(8)
-    //         ->set_settings([
-    //             'media_buttons' => false
-    //         ]),
-
-    //     Field::make('select', 'top', __('Top Position'))
-    //         ->set_help_text('Set a top position to this image in percentage.')
-    //         ->set_options(set_percentage_options()),
-
-    //     $size,
-
-    //     // https://docs.carbonfields.net/learn/fields/color.html#config-methods
-    //     Field::make('color', 'filter', 'Filter')
-    //         ->set_help_text('Set a transparent colour layer over this image. Meta ID: filter.')
-    //         ->set_alpha_enabled(true),
-
-    //     Field::make('association', 'associate', __('Associate'))
-    //         ->set_help_text('Set a link to this image to a local page.')
-    //         ->set_max(1)
-    //         ->set_types(set_all_available_post_types()),
-        
-    //     Field::make('text', 'remote_url', __('Remote URL'))
-    //         ->set_help_text('Set a remote link to this image. Meta ID: remote_url.')
-    //         ->set_width(100)
-    // ];
 }
 
-// Abstract fields (for video) to be reuse.
-function add_crb_video_embed_group() {
-    return [
-        Field::make('textarea', 'code', __('Embed Code'))
-            ->set_help_text('Set an embed iframe code to this video. Meta ID: code.')
+// Abstract fields to be reuse.
+function add_crb_asset_fields($options = []) {
+    $fields = [];
+    $defaults = ['file'];
+
+    // Remove `file` if `image` (or any others below) is set.
+    if (in_array('image', $options) || 
+        in_array('video', $options) || 
+        in_array('script', $options) || 
+        in_array('options', $options)
+    ) {
+        $defaults = [];
+    }
+    $picks = array_merge($defaults, $options);
+
+    $store = [
+        // https://docs.carbonfields.net/learn/fields/file.html#config-methods
+        'file' => Field::make('file', 'id', __(''))
+            ->set_help_text('Set an asset from the local Media Library. Meta ID: id.'),
+
+        'image' => Field::make('file', 'id', __(''))
+            ->set_help_text('Set an asset (image only) from the local Media Library. Meta ID: id.')
+            ->set_type(['image']),
+
+        'video' => Field::make('file', 'id', __(''))
+            ->set_help_text('Set an asset (video only) from the local Media Library. Meta ID: id.')
+            ->set_type(['video']),
+
+        'script' => Field::make('textarea', 'script', __('Script'))
+            ->set_help_text('Set an asset by script. Meta ID: script.')
             ->set_rows(4)
             ->set_width(100),
 
-        Field::make('text', 'title', __('Title'))
-            ->set_help_text('Set a plain-text title to this video. Meta ID: title.')
+        'options' => Field::make('complex', 'options', __(''))
+            ->set_help_text('Set the source option of this asset. Meta ID: options.')
+            ->set_max(1)
+            ->add_fields('file',  [
+                Field::make('file', 'id', __(''))
+                    ->set_help_text('Set an asset from the local Media Library. Meta ID: id.')
+            ])
+            ->add_fields('script',  [
+                Field::make('textarea', 'script', __(''))
+                    ->set_help_text('Set an asset by script. Meta ID: script.')
+                    ->set_rows(4)
+                    ->set_width(100)
+            ]),
+
+       'title' => Field::make('text', 'title', __('Title'))
+            ->set_help_text('Set a plain-text title to this asset. Meta ID: title.')
             ->set_width(100),
 
-        Field::make('rich_text', 'description', __('Description'))
-            ->set_help_text('Set a rich-text description to this video. Meta ID: description.')
+       'description' => Field::make('rich_text', 'description', __('Description'))
+            ->set_help_text('Set a rich-text description to this asset. Meta ID: description.')
             ->set_rows(8)
             ->set_settings([
                 'media_buttons' => false
             ]),
 
-        Field::make('rich_text', 'caption', __('Caption'))
-            ->set_help_text('Set a rich-text caption to this video. Meta ID: caption.')
+       'caption' => Field::make('rich_text', 'caption', __('Caption'))
+            ->set_help_text('Set a rich-text caption to this asset. Meta ID: caption.')
             ->set_rows(8)
             ->set_settings([
                 'media_buttons' => false
             ]),
 
-        Field::make('select', 'size', __('Size'))
-            ->set_help_text('Set a grid size to this video for large screens. Meta ID: size.')
-            ->set_options(set_grid_size_options())
+        'credit' => Field::make('rich_text', 'credit', __('Credit'))
+            ->set_help_text('Set a rich-text credit to this asset.')
+            ->set_rows(8)
+            ->set_settings([
+                'media_buttons' => false
+            ]),
+
+       'size' => Field::make('select', 'size', __('Size'))
+            ->set_help_text('Set a grid size to this asset for large screens. Meta ID: size.')
+            ->set_options(set_grid_size_options()),
+
+        'position' => Field::make('select', 'top', __('Top Position'))
+            ->set_help_text('Set a top position to this asset in percentage.')
+            ->set_options(set_percentage_options()),
+
+        // https://docs.carbonfields.net/learn/fields/color.html#config-methods
+        'filter' => Field::make('color', 'filter', 'Filter')
+            ->set_help_text('Set a transparent colour layer over this asset. Meta ID: filter.')
+            ->set_alpha_enabled(true),
+
+        'associate' => Field::make('association', 'associate', __('Associate'))
+            ->set_help_text('Set a link to this asset to a local page.')
+            ->set_max(1)
+            ->set_types(set_all_available_post_types()),
+        
+        'associate_remote' => Field::make('text', 'remote_url', __('Remote Associate URL'))
+            ->set_help_text('Set a remote associate URL to this asset. Meta ID: associate_remote.')
+            ->set_width(100)
     ];
+
+    foreach ($picks as $key => $value) {
+        // Check if the value matches the array key.
+        if (array_key_exists($value, $store)) {
+            $fields[] = $store[$value];
+        }
+    }
+    return $fields;
 }
 
 // Abstract fields (for key & value) to be reuse.
@@ -206,3 +201,4 @@ function add_crb_key_value_group($type = '') {
 
     return $array;
 }
+

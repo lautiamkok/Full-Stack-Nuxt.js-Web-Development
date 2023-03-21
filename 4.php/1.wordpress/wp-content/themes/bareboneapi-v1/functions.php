@@ -11,12 +11,10 @@
 
 // Enable menu support.
 // https://developer.wordpress.org/reference/functions/add_theme_support/
-register_nav_menus(
-    array(
-        'primary-menu' => __( 'Primary Menu' ),
-        'secondary-menu' => __( 'Secondary Menu' )
-    )
-);
+register_nav_menus([
+    'primary-menu' => __( 'Primary Menu' ),
+    'secondary-menu' => __( 'Secondary Menu' )
+]);
 
 // Enable post thumbnail support.
 // https://codex.wordpress.org/Post_Thumbnails
@@ -46,23 +44,26 @@ include 'inc/metabox/carbon-fields/fields/thumbnail-attributes.php';
 include 'inc/metabox/carbon-fields/fields/post-attributes.php';
 include 'inc/metabox/carbon-fields/fields/related-posts.php';
 include 'inc/metabox/carbon-fields/fields/carousels.php';
+include 'inc/metabox/carbon-fields/fields/galleries.php';
+include 'inc/metabox/carbon-fields/fields/content-blocks.php';
 
-/**
- * Include custom post types.
- *
- */
+// Include custom post types.
 include 'inc/custom-post-type/project.php';
 
-/**
- * Include APIs.
- *
- */
+// Include APIs.
 include 'inc/api/commons.php';
 include 'inc/api/siteinfo.php';
 include 'inc/api/menu.php';
 include 'inc/api/project/post/many.php';
 include 'inc/api/project/get/one.php';
 include 'inc/api/page/get/one.php';
+
+// Disable Gutenberg Completely
+// disable for posts
+add_filter('use_block_editor_for_post', '__return_false', 10);
+
+// disable for post types
+add_filter('use_block_editor_for_post_type', '__return_false', 10);
 
 // Limit the Image Upload Size.
 function whero_limit_image_size ($file) {
@@ -81,10 +82,3 @@ function whero_limit_image_size ($file) {
     return $file;
 }
 add_filter('wp_handle_upload_prefilter', 'whero_limit_image_size');
-
-// Disable Gutenberg Completely
-// disable for posts
-add_filter('use_block_editor_for_post', '__return_false', 10);
-
-// disable for post types
-add_filter('use_block_editor_for_post_type', '__return_false', 10);

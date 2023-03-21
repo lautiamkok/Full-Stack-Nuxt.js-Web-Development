@@ -4,9 +4,8 @@ use Carbon_Fields\Field;
 
 // Thumbnail attributes metabox.
 add_action('carbon_fields_register_fields', 'crb_attach_post_meta_thumbnail_attributes');
-function crb_attach_post_meta_thumbnail_attributes () {
+function crb_attach_post_meta_thumbnail_attributes() {
     Container::make('post_meta', __('Thumbnail Attributes'))
-
         ->add_tab(__('Title'), [
              Field::make('text', 'thumbnail_title', __(''))
                 ->set_help_text('Set a plain-text title to the thumbnail. Meta ID: thumbnail_title.')

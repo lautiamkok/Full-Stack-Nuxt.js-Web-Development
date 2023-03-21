@@ -4,7 +4,7 @@ use Carbon_Fields\Field;
 
 // Theme options metabox.
 add_action('carbon_fields_register_fields', 'crb_attach_theme_options');
-function crb_attach_theme_options () {
+function crb_attach_theme_options() {
 
     // Default options page
     $basic_options_container = Container::make('theme_options', __('Basic Options')) 
@@ -149,7 +149,7 @@ function crb_attach_theme_options () {
                     Field::make('complex', 'images', '')
                         ->set_help_text('Set an image content or a multiple-image content to this page.')
                         ->set_layout('tabbed-vertical')
-                        ->add_fields(add_crb_image_group()),
+                        ->add_fields(add_crb_asset_fields()),
                 ]),
         ])
         ;
