@@ -14,24 +14,24 @@ add_action('rest_api_init', function () use ($namespace) {
 function create_siteinfo ($data) {
     $logo = carbon_get_theme_option('logo');
     if ($logo) {
-         $logo = get_image_data(carbon_get_theme_option('logo'));
+         $logo = get_asset_data(carbon_get_theme_option('logo'));
     }
 
     $logos = carbon_get_theme_option('logos');
     if (count((array)$logos) > 0) {
         foreach ($logos as $key => &$image) {
-            $image['data'] = get_image_data($image['id']);
+            $image = array_merge($image, get_asset_data($image['id']));
         }
     }
 
     $favicon = carbon_get_theme_option('favicon');
     if ($favicon) {
-         $favicon = get_image_data(carbon_get_theme_option('favicon'));
+         $favicon = get_asset_data(carbon_get_theme_option('favicon'));
     }
 
     $open_graph = carbon_get_theme_option('open_graph');
     if ($open_graph) {
-         $open_graph = reset(carbon_get_theme_option('open_graph'));
+         $open_graph = reset($open_graph);
     }
 
     $siteinfo = [

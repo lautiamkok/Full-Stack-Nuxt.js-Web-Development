@@ -17,7 +17,7 @@ const typeDefs = `
 
   type Project {
     ${post}
-    images: [Attachment]
+    assets: [Attachment]
     carousels: [Carousel]
   }
 

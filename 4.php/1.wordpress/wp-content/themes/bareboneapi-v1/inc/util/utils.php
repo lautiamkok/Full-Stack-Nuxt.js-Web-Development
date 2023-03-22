@@ -5,7 +5,7 @@
 
 // Get the url of any attachment, image, file, video, etc.
 // https://developer.wordpress.org/reference/functions/wp_get_attachment_url/
-function get_attachment_url($attachment_id) {
+function get_asset_url($attachment_id) {
     return wp_get_attachment_url($attachment_id);
 }
 
@@ -19,9 +19,9 @@ function get_image_url($attachment_id, $size = '') {
     return $data[0];
 }
 
-// Get image data and its sizes.
+// Get asset (image, file, video, etc) data and its sizes (image only).
 // https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/
-function get_image_data($attachment_id) {
+function get_asset_data($attachment_id) {
     if (!$attachment_id) {
         return false;
     }
@@ -33,11 +33,18 @@ function get_image_data($attachment_id) {
 
     // Push more keys to the data.
     $data['url'] = $uploads_baseurl . '/' . $data['file'];
-    $data['mime_type'] = get_post_mime_type($attachment_id);
+    $data['mime_type'] = $data['mime_type'] ?? get_post_mime_type($attachment_id);
 
-    // Push url key to the sizes.
-    foreach($data['sizes'] as $key => &$size) {
-        $size['url'] = $uploads_baseurl . '/' . $data['file'];
+    // Push the `url` key to the sizes (image only).
+    if ($data['sizes']) {
+        foreach($data['sizes'] as $key => &$size) {
+            // Change the 'mime-type' default to 'mime_type' so that it is
+            // consistent with other assets, such as videos..
+            $size['mime_type'] = $size['mime-type'];
+            unset($size['mime-type']);
+
+            $size['url'] = $uploads_baseurl . '/' . $data['file'];
+        }
     }
     return $data;
 }

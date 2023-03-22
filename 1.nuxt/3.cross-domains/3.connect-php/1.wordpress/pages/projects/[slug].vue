@@ -7,31 +7,38 @@
       v-html="post.post_content"
     />
 
+    <h3>
+      Post Carousels
+    </h3>
     <ul>
       <li v-for="carousel in post.carousels" v-bind:key="carousel.id">
-        <h3>
+        <h3 v-if="carousel.title">
           {{ carousel.title }}
         </h3>
-        <div 
+        <div
+          v-if="carousel.description"
           v-html="carousel.description"
         />
 
         <ul>
-          <li v-for="image in carousel.images" v-bind:key="image.id">
+          <li v-for="asset in carousel.assets" v-bind:key="asset.id">
             <img 
-              :alt="image.title" 
-              :src="useAsset(image.data.sizes.medium.url)"
+              :alt="asset.title || null" 
+              :src="useAsset(asset.sizes.medium.url)"
             />
           </li>
         </ul>
       </li>
     </ul>
 
+    <h3>
+      Post Assets
+    </h3>
     <ul>
-      <li v-for="image in post.images" v-bind:key="image.id">
+      <li v-for="asset in post.assets" v-bind:key="asset.id">
         <img 
-          :alt="image.title" 
-          :src="useAsset(image.data.sizes.medium.url)"
+          :alt="asset.title || null" 
+          :src="useAsset(asset.sizes.medium.url)"
         />
       </li>
     </ul>

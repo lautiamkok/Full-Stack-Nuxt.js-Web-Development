@@ -16,11 +16,11 @@ function crb_attach_post_meta_attributes() {
                 ]),
         ])
 
-        ->add_tab(__('Images'), [
-            Field::make('complex', 'images', '')
-                ->set_help_text('Attach local images to this post. Meta ID: images.')
+        ->add_tab(__('Assets'), [
+            Field::make('complex', 'assets', '')
+                ->set_help_text('Attach local assets to this post. Meta ID: assets.')
                 ->set_layout('tabbed-vertical')
-                ->add_fields(add_crb_asset_fields()),
+                ->add_fields(add_crb_asset_fields(['caption'])),
         ])
 
         ->add_tab(__('Search Exclude'), [

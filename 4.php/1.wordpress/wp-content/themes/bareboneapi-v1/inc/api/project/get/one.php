@@ -37,22 +37,56 @@ function fetch_project ($data) {
     $post->carousels = carbon_get_post_meta($post->ID, 'carousels');
     if (count((array)$post->carousels) > 0) {
         foreach ($post->carousels as $key => &$carousel) {
-            $carousel['description'] = wpautop($carousel['description']);
-            if (count($carousel['images']) > 0) {
-                foreach ($carousel['images'] as $key => &$image) {
-                    $image['description'] = wpautop($image['description']);
-                    $image['data'] = get_image_data($image['id']);
+            if ($carousel['_type'] === 'gallery') {
+                foreach ($carousel['gallery'] as $key => &$asset) {
+                    $asset_id = $asset;
+                    $asset = get_asset_data($asset_id);
+                    $asset['id'] = $asset_id;
+                }
+                $carousel['assets'] = $carousel['gallery'];
+                unset($carousel['gallery']);
+            }
+            if ($carousel['_type'] === 'assets') {
+                foreach ($carousel['assets'] as $key => &$asset) {
+                    $asset['caption'] = wpautop($asset['caption'] ?? '');
+                    $asset = array_merge($asset, get_asset_data($asset['id']));
+                }
+            }
+            if ($carousel['_type'] === 'complex') {
+                $carousel['description'] = wpautop($carousel['description']);
+                if (count($carousel['assets']) > 0) {
+                    // Only take the first item from the array.
+                    $carousel['assets'] = $carousel['assets'][0];
+                    unset($carousel['assets'][0]);
+
+                    // Set asset data.
+                    if ($carousel['assets']['_type'] === 'complex') {
+                        foreach ($carousel['assets']['complex'] as $key => &$asset) {
+                            $asset['caption'] = wpautop($asset['caption'] ?? '');
+                            $asset = array_merge($asset, get_asset_data($asset['id']));
+                        }
+                        $carousel['assets'] = $carousel['assets']['complex'];
+                    }
+                    if ($carousel['assets']['_type'] === 'gallery') {
+                        foreach ($carousel['assets']['gallery'] as $key => &$asset) {
+                            $asset_id = $asset;
+                            $asset = get_asset_data($asset_id);
+                            $asset['id'] = $asset_id;
+                        }
+                        $carousel['assets'] = $carousel['assets']['gallery'];
+                    }
+                    unset($carousel['assets']['_type']);
                 }
             }
         }
     }
 
     // Add images from carbon fields.
-    $post->images = carbon_get_post_meta($post->ID, 'images');
-    if (count((array)$post->images) > 0) {
-        foreach ($post->images as $key => &$image) {
-            $image['description'] = wpautop($image['description']);
-            $image['data'] = get_image_data($image['id']);
+    $post->assets = carbon_get_post_meta($post->ID, 'assets');
+    if (count((array)$post->assets) > 0) {
+        foreach ($post->assets as $key => &$asset) {
+            $asset['caption'] = wpautop($asset['caption'] ?? '');
+            $asset = array_merge($asset, get_asset_data($asset['id']));
         }
     }
 

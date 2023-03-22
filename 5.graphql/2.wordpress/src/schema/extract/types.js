@@ -17,10 +17,6 @@ const attachment = `
   type Attachment {
     id: String
     ${note}
-    data: AttachmentData
-  }
-
-  type AttachmentData {
     ${attachmentAttributes}
     sizes: AttachmentSizes
   }
@@ -38,7 +34,7 @@ const attachment = `
 const carousel = `
   type Carousel {
     ${note}
-    images: [Attachment]
+    assets: [Attachment]
   }
 `
 
