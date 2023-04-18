@@ -9,5 +9,7 @@
 definePageMeta({
   layout: 'light',
 })
-setPageLayout('light')
+if (process.client) {
+  setPageLayout('light')
+}
 </script>

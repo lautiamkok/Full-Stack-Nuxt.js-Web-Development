@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "node dist/app.js",
+    "test": "standard src/**/*.{js,ts}",
+    "fix": "standard --fix src/**/*.{js,ts}"
+  },
+  "dependencies": {
+    "find-my-way": "^7.6.0",
+    "rethinkdb": "^2.4.2",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0",
+    "unimport": "^3.0.6",
+    "vite": "^4.1.4",
+    "vite-plugin-node": "^3.0.2"
+  }
+}

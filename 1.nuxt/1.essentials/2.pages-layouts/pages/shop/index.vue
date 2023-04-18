@@ -5,5 +5,7 @@
 </template>
 
 <script setup>
-setPageLayout('default')
+if (process.client) {
+  setPageLayout('default')
+}
 </script>

@@ -3,6 +3,10 @@
     Hello World!
   </p>
 
+  <p class="text-red-500 font-bold">
+    NOTE: Nuxt 3.4 does not work well with TailWind CSS or Windi CSS. So you must install `consola` to resolve the issue: https://github.com/nuxt/nuxt/issues/20209
+  </p>
+
   <div class="container mx-auto space-y-3 has-links border-1">
     <p>
       I am a paragraph with a <a href="#">link</a>.

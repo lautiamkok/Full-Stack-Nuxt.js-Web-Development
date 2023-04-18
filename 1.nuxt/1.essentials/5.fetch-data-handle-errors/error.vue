@@ -1,6 +1,6 @@
 <template>
-  <site-header />
-  <nav-main />
+  <site-header/>
+  <nav-main/>
   <h2>
     {{ error.statusCode }} Error
   </h2>
