@@ -4,6 +4,27 @@
 import { defineStore } from 'pinia'
 
 export const useCartStore = defineStore('cart', () => {
+  const runtimeConfig = useRuntimeConfig()
+  const cartId = runtimeConfig.public['appCartId']
+  const days = 1
+  const options = {
+    path: '/',
+
+    // Expire in [x] minutes.
+    maxAge: 5 * 60 
+    
+    // Or, in [x] number of days.
+    // maxAge: days * 24 * 60 * 60
+    
+    // Or:
+    // days
+  }
+  const { 
+    set: setCookie, 
+    get: getCookie, 
+    drop: dropCookie
+  } = useCooki3(options)
+
   const { items } = useCart()
   const response = reactive({
     message: '',
@@ -43,6 +64,20 @@ export const useCartStore = defineStore('cart', () => {
       await updateItem(item)
       return
     }
+
+    // Set new cookie key with a value for the cart when the cart is started empty
+    // each time.
+    if (uniqueLength.value === 0) {
+      const timestamp = Date.now()
+      setCookie(cartId, timestamp)
+    }
+
+    // Update cookie's expiration the cart is updated each time.
+    if (uniqueLength.value > 0) {
+      const value = getCookie(cartId)
+      setCookie(cartId, value)
+    }
+
     items.value.push(item)
 
     // Store items to `localstorage` and send them to the server.
@@ -67,6 +102,12 @@ export const useCartStore = defineStore('cart', () => {
     items.value[index].quantity = item.quantity
     items.value[index].cost = item.cost
 
+    // Update cookie's expiration the cart is updated each time.
+    if (uniqueLength.value > 0) {
+      const value = getCookie(cartId)
+      setCookie(cartId, value)
+    }
+
     // Store items to `localstorage` and send them to the server.
     storeItems(items) 
 
@@ -88,6 +129,12 @@ export const useCartStore = defineStore('cart', () => {
     // Delete the item from store.
     items.value.splice(index, 1)
 
+    // Update cookie's expiration the cart is updated each time.
+    if (uniqueLength.value > 0) {
+      const value = getCookie(cartId)
+      setCookie(cartId, value)
+    }
+
     // Store items to `localstorage` and send them to the server.
     storeItems(items) 
   }
@@ -99,23 +146,19 @@ export const useCartStore = defineStore('cart', () => {
     storeItems(items) 
   }
 
-  function storeItems (items) {
-    const runtimeConfig = useRuntimeConfig()
-    const appBaseUrl = runtimeConfig.public['appBaseUrl']
-    const id = runtimeConfig.public['appCartId']
+  async function storeItems (items) {
     const body = JSON.stringify(unref(items))
+    localStorage.setItem(cartId, body)
 
-    localStorage.setItem(id, body)
-    fetch(`${appBaseUrl}?cart=set`, {
+    const { data } = await useFetch(`/api/carts/create/one`, {
       method: 'POST',
-      headers: {
-        'Content-Type':'application/json'
-      },
       body
     })
-
+    // console.log('cart set =', data.value)
+    
     if (unref(items).length === 0) {
-      localStorage.removeItem(id)
+      localStorage.removeItem(cartId)
+      dropCookie(cartId)
     }
   }
 

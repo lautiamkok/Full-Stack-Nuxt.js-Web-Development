@@ -43,6 +43,7 @@ Testing in Nuxt.js 3 is still in development. The APIs and behaviors for testing
 * [Node.js Fetch API*](https://undici.nodejs.org/#/docs/api/Fetch)
 * Gridsome*
 * Nuxt Content*
+* Redis*
 * MongoDB
 * RethinkDB
 * MySQL
@@ -99,7 +100,7 @@ If you are also interested in the preceding general knowledge and skills for you
 
 * Handle static and dynamic assets using composables
 
-* Create a data-persistent (client-server) shopping cart system with Pinia, cookies, and composables
+* Create a data-persistent (client-server) shopping cart system with Pinia, Redis, and cookies
 
 * Manage document head tags for SEO and Open Graph
 
@@ -127,14 +128,24 @@ If you are also interested in the preceding general knowledge and skills for you
 
 * Chapter 1. Introducing Advanced Nuxt Web Development
 
-    Get to know the abstract of this course, who it is for, and what it will cover, as well as the course requirements and where to download the example code files. Start a Nuxt project with Nuxi (Nuxt scaffolding tool). Explore Nuxt's project structure such as the `/pages/` and `/assets/` directories. Learn to customize your Nuxt app with the `nuxt.config` and `.env` files.
+    Get to know the abstract of this course, who it is for, and what it will cover, as well as the course requirements and where to download the example code files. Get to know Composition API and its benefits comparing to Option API. Start a Nuxt project with Nuxi (Nuxt scaffolding tool). Explore Nuxt's project structure such as the `/pages/` and `/assets/` directories. Learn to customize your Nuxt app with the `nuxt.config` and `.env` files.
 
     * Knowing the Course
+    * Migrating to Composition API from Option API
     * Knowing Nuxt and Starting Nuxt projects
     * Exploring the Nuxt Project Directory Structure 
     * Making Custom Configurations in Nuxt Projects
 
-* Chapter 2. Managing Assets and Adding UI Frameworks
+* Chapter 2. Creating Pages, Layouts, Composables, Plugins, Utilities, and Middleware
+
+    Create static and dynamic pages and static and dynamic routes in Nuxt apps. Create static and dynamic pages layouts with the `definePageMeta` and `setPageLayout` Nuxt APIs and the `NuxtLayout` Nuxt component. Create auto-import composables (top-level and nested) and utilities. Create client-only and server-only plugins. Install plugins using the `nuxt.config` file. Create auto-import plugins with the `provide` plugin helper. Create global to be execute automatically when route changes manually applied. Create named middleware to be applied manually on specific pages.
+
+    * Creating Static and Dynamic Routes
+    * Creating Static and Dynamic Layouts
+    * Creating Composables and Utilities
+    * Creating Plugins and Middleware
+
+* Chapter 3. Managing Assets and Adding UI Frameworks
 
     Serve public and static assets such as images and fonts in Nuxt projects. Use Windi CSS as a UI framework for Nuxt apps and create responsive layouts with Windi CSS. Write CSS using Less as the CSS preprocessor in your Vue apps. Serve dynamic assets from using composables in the `<template>` block.
 
@@ -142,15 +153,6 @@ If you are also interested in the preceding general knowledge and skills for you
     * Adding CSS Preprocessors: Less
     * Serving Static Assets
     * Serving Dynamic Assets
-
-* Chapter 3. Creating Pages, Layouts, Composables, Plugins, Utilities, and Middleware
-
-    Create static and dynamic pages and static and dynamic routes in Nuxt apps. Create static and dynamic pages layouts with the `definePageMeta` and `setPageLayout` Nuxt APIs and the `NuxtLayout` Nuxt component. Create auto-import composables (top-level and nested) and utilities. Create client-only and server-only plugins. Install plugins using the `nuxt.config` file. Create auto-import plugins withh the `provide` plugin helper. Create global to be execute automatically when route changes manually applied. Create named middleware to be applied manually on specific pages.
-
-    * Creating Static and Dynamic Routes
-    * Creating Static and Dynamic Layouts
-    * Creating Composables and Utilities
-    * Creating Plugins and Middleware
 
 * Chapter 4. Fetching Data and Handling Errors
 
@@ -162,14 +164,14 @@ If you are also interested in the preceding general knowledge and skills for you
 
 * Chapter 5. Managing States and Stores
 
-    Create global states with the `useState` Nuxt API to be shared between the server and client across components and pages. Manipulate global states from specific pages. Build a counter and a shopping cart system with Pinia. Create a client-server data-persistent store with the `useCookie` Nuxt API. Create a client-server data-persistent store with `localStorage` and composables.
+    Create global states with the `useState` Nuxt API to be shared between the server and client across components and pages. Manipulate global states from specific pages. Build a counter and a shopping cart system with Pinia. Create a client-server data-persistent store with the `useCookie` Nuxt API. Create a client-server data-persistent store with `localStorage` and Redis.
 
     * Creating States with `useState`
     * Creating Stores with Pinia: Counters and Shopping Carts
     * Creating Data-Persistent Stores with Cookies
-    * Creating Data-Persistent Stores with Composables
+    * Creating Data-Persistent Stores with Redis
 
-* Chapter 6. Managing Database with Nitro Server Engine in Nuxt
+* Chapter 6. Managing Data with Nitro Server Engine in Nuxt
 
     Create Nuxt's built-in API layers, API routes, and API calls with server middleware, server plugins, and server utilities. Store and manage data with Nitro's default in-memory data storage. Integrate MongoDB database internally in the Nuxt apps. Use Nuxt Content module and Markdown documents as your database in the Nuxt apps.
 
@@ -178,7 +180,7 @@ If you are also interested in the preceding general knowledge and skills for you
     * Managing Data with MongoDB Database
     * Managing Data with the Nuxt Content Module
 
-* Chapter 7. Managing Database with Node.js Apps for Nuxt
+* Chapter 7. Managing Data with Node.js Apps for Nuxt
 
     Create Hot Module Replacement (HMR) Node.js apps with Vite, Node.js HTTP API, and `find-my-way` HTTP router. Create an HMR Node.js app with MySQL database and MongoDB database. Enable CORS in HMR Node.js apps for integrating with your Nuxt app. Create a real-time Nuxt app with RethinkDB and manage your app data with the RethinkDB database, Socket.IO, and the HMR Node.js app.
 
@@ -197,16 +199,19 @@ If you are also interested in the preceding general knowledge and skills for you
 
 * Chapter 9. Building GraphQL Layers with MongoDB, WordPress, Gridsome and Markdown Documents for Nuxt
 
-    Create HMR GraphQL apps with Apollo Server, Node.js HTTP API, MongoDB, an WordPress for your Nuxt app. Use Gridsome and Markdown documents as the GraphQL server and database for your Nuxt app. Fetch data from GraphQL servers using GraphQL queries in your Nuxt apps. 
+    Introduce GraphQL and its benefits. Create HMR GraphQL apps with Apollo Server, Node.js HTTP API, MongoDB, an WordPress for your Nuxt app. Use Gridsome and Markdown documents as the GraphQL server and database for your Nuxt app. Fetch data from GraphQL servers using GraphQL queries in your Nuxt apps. 
 
+    * Introducing GraphQL
     * Creating GraphQL Servers with MongoDB Database and Node.js HTTP API
     * Creating GraphQL Servers with WordPress REST APIs and Node.js HTTP API
     * Creating GraphQL Servers with Gridsome and Markdown Documents
 
 * Chapter 10. Creating SSG Sites with Nuxt and WordPress and Going Further
 
-    Create static-generated (SSG) sites with Nuxt and WordPress. Fetch data and stream assets from WordPress into your Nuxt project for making SSG sites. Take your Nuxt app further with testing, deployment, and other Nuxt modules and APIs. Look into options, such as using Quasar, Gridsome, and Vite SSR alone or Vite SSR plugins, for building Vue SSR and SSG apps.
+    Create static-generated (SSG) sites with Nuxt and WordPress. Fetch data and stream assets from WordPress into your Nuxt project for making SSG sites. Take your Nuxt app further with testing, deployment, other Nuxt modules, such as Nuxt GTA an Nuxt-Auth, and other Nuxt APIs, such as composable APIs, utilities APIs, and component APIs (e.g. `<Teleport>`). Look into options, such as using Quasar, Gridsome, and Vite SSR alone or Vite SSR plugins, for building Vue SSR and SSG apps.
 
     * Fetching Data from WordPress for Static Sites
     * Streaming Assets from WordPress for Static Sites
     * Going Further and Knowing Your Options
+
+If you are interested in this course, please check out [this page](https://lauthiamkok.net/origins/digital/advanced-vuejs-web-development) for how to purchase the course guide.

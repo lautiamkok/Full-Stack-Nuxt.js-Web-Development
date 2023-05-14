@@ -72,7 +72,7 @@ router.on('DELETE', '/users/delete/:id', async (req, res, params) => {
 // http://localhost:5000/public/fixtures/hello.txt
 router.on('GET', '/public/*', (req, res) => {
   // Use `decodeURIComponent` to decode non-English characters in the URL.
-  fs.readFile(`./${decodeURIComponent(req.url)}`, (err,data) => {
+  fs.readFile(`./${decodeURIComponent(req.url)}`, (err, data) => {
     if (err) {
       res.statusCode = 404
       res.end(JSON.stringify({

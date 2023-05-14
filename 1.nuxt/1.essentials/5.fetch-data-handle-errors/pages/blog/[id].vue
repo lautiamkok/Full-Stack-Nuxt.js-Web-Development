@@ -14,6 +14,7 @@ const runtimeConfig = useRuntimeConfig()
 const { data: post, error } = await useFetch(`/posts/${route.params.id}`, {
   baseURL: runtimeConfig.public['apiBaseUrl']
 })
+
 const failure = unref(error)
 if (failure !== null) {
   // Show a full screen error page on the `error.vue` page.

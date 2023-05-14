@@ -18,7 +18,7 @@ router.on('GET', '/', (req, res) => {
 // http://localhost:5000/public/fixtures/hello.txt
 router.on('GET', '/public/*', (req, res) => {
   // Use `decodeURIComponent` to decode non-English characters in the URL.
-  fs.readFile(`./${decodeURIComponent(req.url)}`, (err,data) => {
+  fs.readFile(`./${decodeURIComponent(req.url)}`, (err, data) => {
     if (err) {
       // Overide the default statusCode code.
       res.statusCode = 404
