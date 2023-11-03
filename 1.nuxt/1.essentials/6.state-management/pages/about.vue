@@ -1,10 +1,36 @@
 <template>
-  <p>{{ message }}</p>
+  <p>
+    countA (composable): {{ countA }}
+  </p>
+  <p>
+    countB (provide/inject): {{ countB }}
+  </p>
+  <p>
+    countC (useState): {{ countC }}
+  </p>
+  
+  <button type="button" @click="countA++">
+    count is {{ countA }}
+  </button>
+  <button type="button" @click="countB++">
+    countB (provide/inject) is {{ countB }}
+  </button>
+  <button type="button" @click="countC++">
+    countC (useState) is {{ countC }}
+  </button>
 </template>
 
 <script setup>
-const message = useState('message')
+// Change the original state:
+// A:
+const countA = useCount()
+countA.value = 1
 
-// Change the original state.
-message.value = 'Hello About!'
+// B:
+const countB = inject('count')
+countB.value = 100
+
+// C:
+const countC = useState('count')
+countC.value = 200
 </script>

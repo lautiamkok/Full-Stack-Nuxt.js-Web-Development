@@ -67,6 +67,10 @@ if (post.value) {
         content: head.description
       },
       {
+        name: 'keywords',
+        content: head.keywords
+      },
+      {
         property: 'og:title',
         content: head.og.title
       },

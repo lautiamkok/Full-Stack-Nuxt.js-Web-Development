@@ -4,10 +4,10 @@
     "build": "nuxt build --dotenv .env.production",
     "dev": "nuxt dev",
     "generate": "nuxt generate --dotenv .env.production",
-    "preview": "nuxt preview",
+    "preview": "nuxt preview --dotenv .env.production",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "^3.2.3"
+    "nuxt": "^3.8.0"
   }
 }

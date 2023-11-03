@@ -1,22 +1,27 @@
 {
-    "require": {
-        "laminas/laminas-diactoros": "^2.24",
-        "laminas/laminas-httphandlerrunner": "^2.5",
-        "laminas/laminas-stratigility": "^3.9",
-        "league/route": "^5.1",
-        "catfan/medoo": "^2.1",
-        "ramsey/uuid": "^4.7"
-    },
-    "autoload": {
-        "psr-4": {
-            "Spectre\\": [
-                "core/",
-                "module/"
-            ],
-            "YourCustomNamespace\\": [
-                "core/",
-                "module/"
-            ]
-        }
+  "require": {
+    "laminas/laminas-diactoros": "^2.24",
+    "laminas/laminas-httphandlerrunner": "^2.5",
+    "laminas/laminas-stratigility": "^3.9",
+    "league/route": "^5.1",
+    "catfan/medoo": "^2.1",
+    "ramsey/uuid": "^4.7"
+  },
+  "autoload": {
+    "files": [
+      "src/utils/get-files.php"
+    ],
+    "psr-4": {
+      "NameA\\": [
+        "src/",
+        "src/modules/",
+        "src/routes/"
+      ],
+      "NameB\\": [
+        "src/",
+        "src/modules/",
+        "src/routes/"
+      ]
     }
+  }
 }

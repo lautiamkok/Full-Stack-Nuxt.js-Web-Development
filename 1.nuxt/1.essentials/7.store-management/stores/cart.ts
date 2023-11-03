@@ -25,22 +25,21 @@ export const useCartStore = defineStore('cart', () => {
     drop: dropCookie
   } = useCooki3(options)
 
-  const { items } = useCart()
+  const cart = ref([])
   const response = reactive({
     message: '',
     data: ''
   })
-  const getItems = computed(() => items.value)
-  const uniqueLength = computed(() => items.value.length)
+  const uniqueLength = computed(() => cart.value.length)
   const sumQuantity = computed(() => {
     // Sum the items by the `quantity` key.
-    return items.value.reduce((accumulator, object) => 
+    return cart.value.reduce((accumulator, object) => 
       Number(object.quantity) + accumulator, 0
     )
   })
   const sumCost = computed(() => {
     // Sum the cost by the `cost` key.
-    const costs = items.value.reduce((accumulator, object) => 
+    const costs = cart.value.reduce((accumulator, object) => 
       Number(object.cost) + accumulator, 0
     )
     return costs.toFixed(2)
@@ -59,7 +58,7 @@ export const useCartStore = defineStore('cart', () => {
     // Don't push the item if it exists already, update the item's quantity
     // instead. Find the match using id because the quantity can change.
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
-    const exist = items.value.some(product => product.id === item.id)
+    const exist = cart.value.some(product => product.id === item.id)
     if (exist === true) {
       await updateItem(item)
       return
@@ -78,10 +77,10 @@ export const useCartStore = defineStore('cart', () => {
       setCookie(cartId, value)
     }
 
-    items.value.push(item)
+    cart.value.push(item)
 
-    // Store items to `localstorage` and send them to the server.
-    storeItems(items) 
+    // Store cart to `localstorage` and send them to the server.
+    storeCart(cart) 
 
     response.message = 'Added ok'
     response.data = item
@@ -93,14 +92,14 @@ export const useCartStore = defineStore('cart', () => {
   async function updateItem (item) {
     // Find the index of the current element.
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
-    const index = items.value.findIndex((element, index) => {
+    const index = cart.value.findIndex((element, index) => {
       if (element.id === item.id) {
         return true
       }
     })
 
-    items.value[index].quantity = item.quantity
-    items.value[index].cost = item.cost
+    cart.value[index].quantity = item.quantity
+    cart.value[index].cost = item.cost
 
     // Update cookie's expiration the cart is updated each time.
     if (uniqueLength.value > 0) {
@@ -108,8 +107,8 @@ export const useCartStore = defineStore('cart', () => {
       setCookie(cartId, value)
     }
 
-    // Store items to `localstorage` and send them to the server.
-    storeItems(items) 
+    // Store cart to `localstorage` and send them to the server.
+    storeCart(cart) 
 
     response.message = 'Updated ok'
     response.data = item
@@ -120,14 +119,14 @@ export const useCartStore = defineStore('cart', () => {
 
   function deleteItem (item) {
     // Find the index of the current element.
-    const index = items.value.findIndex((element, index) => {
+    const index = cart.value.findIndex((element, index) => {
       if (element.id === item.id) {
         return true
       }
     })
 
     // Delete the item from store.
-    items.value.splice(index, 1)
+    cart.value.splice(index, 1)
 
     // Update cookie's expiration the cart is updated each time.
     if (uniqueLength.value > 0) {
@@ -135,28 +134,27 @@ export const useCartStore = defineStore('cart', () => {
       setCookie(cartId, value)
     }
 
-    // Store items to `localstorage` and send them to the server.
-    storeItems(items) 
+    // Store cart to `localstorage` and send them to the server.
+    storeCart(cart) 
   }
 
   function empty () {
-    items.value = []
+    cart.value = []
 
-    // Store items to `localstorage` and send them to the server.
-    storeItems(items) 
+    // Store cart to `localstorage` and send them to the server.
+    storeCart(cart) 
   }
 
-  async function storeItems (items) {
-    const body = JSON.stringify(unref(items))
+  async function storeCart (cart) {
+    const body = JSON.stringify(unref(cart))
     localStorage.setItem(cartId, body)
 
     const { data } = await useFetch(`/api/carts/create/one`, {
       method: 'POST',
       body
     })
-    // console.log('cart set =', data.value)
     
-    if (unref(items).length === 0) {
+    if (unref(cart).length === 0) {
       localStorage.removeItem(cartId)
       dropCookie(cartId)
     }
@@ -164,8 +162,7 @@ export const useCartStore = defineStore('cart', () => {
 
   return {
     response,
-    items,
-    getItems,
+    cart,
     uniqueLength,
     sumQuantity,
     sumCost,

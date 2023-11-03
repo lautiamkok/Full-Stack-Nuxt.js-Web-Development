@@ -2,7 +2,7 @@
   Option 1: Using `route.params`.
 -->
 <template>
-  <projects-items-with-pager/>
+  <projects-items-with-pager />
 </template>
 
 <!--

@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "find-my-way": "^7.6.0",
-    "mysql": "^2.18.1"
+    "mariadb": "^3.2.0"
   },
   "devDependencies": {
     "unimport": "^3.0.6",

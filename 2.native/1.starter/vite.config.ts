@@ -32,6 +32,11 @@ export default defineConfig(({ command, mode }) => {
 
       // https://github.com/unjs/unimport
       Unimport.vite({
+        // Auto import Node.js modules and packages (not recommended).
+        // imports: [
+        //   { name: 'default', as: 'fs', from: 'fs' },
+        //   { name: 'default', as: 'findmyway', from: 'find-my-way' }
+        // ],
         dirs: [
           './src/composables/**',
           './src/utils/**'

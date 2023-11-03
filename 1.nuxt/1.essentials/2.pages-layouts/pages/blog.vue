@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>
-      {{ title }}
+      Blog
     </h2>
     <ul v-if="menu">
       <li v-for="(item, index) in menu">
@@ -21,7 +21,6 @@
 
 <script setup>
 const route = useRoute()
-const title = 'Blog'
 const menu = [
   {
     title: 'Post 1',
@@ -36,7 +35,11 @@ const menu = [
     path: '/blog/post-3'
   },
   {
-    title: 'Post 4 (error demo)',
+    title: 'Post 4 (400 error demo)',
+    path: '/blog/$'
+  },
+  {
+    title: 'Post 5 (404 error demo)',
     path: '/blog/post-4'
   }
 ]

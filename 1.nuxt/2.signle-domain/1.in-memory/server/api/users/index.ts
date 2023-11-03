@@ -1,6 +1,6 @@
 'use strict'
 
 export default eventHandler(async event => {
-  const db = makeDb()
+  const db = connectDb()
   return await db.getItem('users') || []
 })

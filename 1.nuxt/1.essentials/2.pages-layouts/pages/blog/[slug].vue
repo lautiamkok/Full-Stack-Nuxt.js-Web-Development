@@ -1,8 +1,10 @@
 <template>
-  <h2>
-    {{ title }}
-  </h2>
-  <div v-html="contents" />
+  <div v-if="title || contents">
+    <h2>
+      {{ title }}
+    </h2>
+    <div v-html="contents" />
+  </div>
 </template>
 
 <script setup>
@@ -31,18 +33,22 @@ const posts = [
   }
 ]
 
-// Find the requested product from products.
-let found = posts.find(post => post.slug === route.params.slug)
+// Find the requested post from posts.
+const found = posts.find(post => post.slug === route.params.slug)
 
-// Throw or show a 404 error if the post is not found.
+// Throw a 400 error for invalid params.
 // https://nuxt.com/docs/api/utils/create-error
+const test = /^[a-zA-Z0-9\-]*$/.test(route.params.slug)
+if (test === false) {
+  throw createError({
+    statusCode: 400, 
+    statusMessage: 'Invalid request'
+  })
+}
+
+// Show a 404 error if the post is not found.
 // https://nuxt.com/docs/api/utils/show-error#showerror
 if (found === undefined) {
-  // throw createError({
-  //   statusCode: 404, 
-  //   statusMessage: 'Page Not Found'
-  // })
-
   showError({ 
     statusCode: 404, 
     statusMessage: 'Page Not Found'
@@ -53,14 +59,8 @@ if (found === undefined) {
 title.value = found.title
 contents.value = found.contents
 
-// Change the top-level layout dynamically. Note that this option will always
-// make the top-level flickers a bit when refreshing the page.
-// https://nuxt.com/docs/guide/directory-structure/layouts#changing-the-layout-dynamically
-// definePageMeta({
-//   layout: false,
-// })
-
-if (process.client) {
-  setPageLayout(found.layout)
-}
+definePageMeta({
+  middleware: ['layout']
+  // or middleware: 'layout'
+})
 </script>

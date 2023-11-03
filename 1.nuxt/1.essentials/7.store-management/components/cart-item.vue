@@ -12,13 +12,13 @@
     Unit Price: $ {{ product.price }}
   </p>
   <p>
-    Total Cost: $ {{ product.sum }}
+    Total Cost: $ {{ product.cost }}
   </p>
   <input 
     v-model="quantity" 
     type="number" 
     min="1" 
-    max="{{ product.stock }}"
+    v-bind:max="product.stock"
   />
   <button @click="update">
     Update

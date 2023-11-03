@@ -2,5 +2,5 @@
 
 // https://nuxt.com/docs/guide/directory-structure/server#server-middleware
 export default defineEventHandler(event => {
-  console.log('New request: ' + event.node.req.url)
+  console.log('Request URL: ' + event.node.req.url)
 })

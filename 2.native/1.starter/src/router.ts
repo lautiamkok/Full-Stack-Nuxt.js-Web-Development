@@ -20,7 +20,7 @@ router.on('GET', '/public/*', (req, res) => {
   // Use `decodeURIComponent` to decode non-English characters in the URL.
   fs.readFile(`./${decodeURIComponent(req.url)}`, (err, data) => {
     if (err) {
-      // Overide the default statusCode code.
+      // Override the default statusCode code.
       res.statusCode = 404
       
       res.end(JSON.stringify({
@@ -54,8 +54,11 @@ router.on('GET', '/hello', (req, res, params) => {
   res.end('{"winter":"is here"}')
 })
 
+// http://localhost:5000/xxx/zzz
+// http://localhost:5000/hello/xxx
+// {"message":"page not found!"}
 router.on('GET', '*', (req, res) => {
-  // Overide the default statusCode code.
+  // Override the default statusCode code.
   // Send json data.
   res.statusCode = 404
   res.end('{"message":"page not found!"}')

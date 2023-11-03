@@ -15,8 +15,8 @@ const menu = [
     path: '/'
   },
   {
-    title: 'Projects',
-    path: '/projects'
+    title: 'Blog',
+    path: '/blog'
   }
 ]
 </script>

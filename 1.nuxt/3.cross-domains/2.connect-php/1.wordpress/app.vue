@@ -1,8 +1,8 @@
 <template>
   <div v-if="!error">
-    <site-header/>
-    <nav-main/>
-    <NuxtPage/>
+    <site-header />
+    <nav-main />
+    <NuxtPage />
   </div>
   <error-handler 
     v-else 
@@ -29,6 +29,10 @@ if (!error.value) {
       {
         name: 'description',
         content: siteinfo.description
+      },
+      {
+        name: 'keywords',
+        content: siteinfo.keywords
       },
       {
         property: 'og:type',

@@ -8,8 +8,8 @@ import index from '@/routes/index'
 import users from '@/routes/users/index'
 import userBySlug from '@/routes/users/slug'
 import userCreate from '@/routes/users/create'
-import userUpdate from '@/routes/users/update'
-import userDelete from '@/routes/users/delete'
+import userUpdateById from '@/routes/users/update'
+import userDeleteById from '@/routes/users/delete'
 
 // https://github.com/delvedor/find-my-way
 const router = findmyway()
@@ -52,7 +52,7 @@ router.on('POST', '/users/create', async (req, res) => {
 // PUT http://localhost:5000/users/update/[id]
 router.on('PUT', '/users/update/:id', async (req, res, params) => {
   const ctx = { req, params }
-  const { data, statusCode } = await userUpdate(ctx)
+  const { data, statusCode } = await userUpdateById(ctx)
   res.statusCode = statusCode
   res.end(data)
 })
@@ -60,7 +60,7 @@ router.on('PUT', '/users/update/:id', async (req, res, params) => {
 // DELETE http://localhost:5000/users/delete/[id]
 router.on('DELETE', '/users/delete/:id', async (req, res, params) => {
   const ctx = { req, params }
-  const { data, statusCode } = await userDelete(ctx)
+  const { data, statusCode } = await userDeleteById(ctx)
   res.statusCode = statusCode
   res.end(data)
 })

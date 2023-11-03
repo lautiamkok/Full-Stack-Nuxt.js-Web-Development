@@ -1,3 +1,3 @@
 <template>
-  <projects-items-with-pager/>
+  <projects-items-with-pager />
 </template>

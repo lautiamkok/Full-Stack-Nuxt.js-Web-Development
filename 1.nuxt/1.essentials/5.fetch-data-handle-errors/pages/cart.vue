@@ -20,7 +20,7 @@ const runtimeConfig = useRuntimeConfig()
 
 // Fetch the data using the `useFetch` method provided by Nuxt.
 // https://nuxt.com/docs/api/composables/use-fetch
-const { data, error } = await useFetch('/posts/1000000', {
+const { data, error } = await useFetch('/posts/2000000', {
   baseURL: runtimeConfig.public['apiBaseUrl']
 })
 const failure = unref(error)

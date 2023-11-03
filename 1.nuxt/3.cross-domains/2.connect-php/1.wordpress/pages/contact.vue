@@ -4,6 +4,6 @@
 
 <script setup>
 // TypeError test:
-const num = 123
-num.toUpperCase()
+// const num = 123
+// num.toUpperCase()
 </script>

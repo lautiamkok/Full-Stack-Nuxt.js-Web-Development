@@ -15,13 +15,3 @@ export default eventHandler(async () => {
 
   return docs
 })
-
-// import { MongoClient } from 'mongodb'
-
-// export default eventHandler(async event => {
-//   const client = await new MongoClient('mongodb://localhost:27017').connect()
-//   const collection = client.db('advanced-nuxtjs-course').collection('users')
-//   const docs = await collection.find().toArray()
-//   client.close()
-//   return docs
-// })

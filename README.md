@@ -22,6 +22,7 @@ This repository is the successor of [*Hands-on Nuxt.js Web Development*](https:/
 * Koa
 * Express
 * Keystone
+* Apollo Server
 * Axios
 * VeeValidate (Vue form validation)
 * Google OAuth/ Google APIs Node.js Client
@@ -41,15 +42,16 @@ Testing in Nuxt.js 3 is still in development. The APIs and behaviors for testing
 * Pinia*
 * [Node.js HTTP API*](https://nodejs.org/api/http.html)
 * [Node.js Fetch API*](https://undici.nodejs.org/#/docs/api/Fetch)
-* Gridsome*
+* [Node.js Stream API*](https://nodejs.org/api/stream.html)
 * Nuxt Content*
 * Redis*
 * MongoDB
 * RethinkDB
 * MySQL
 * Socket.IO
+* GraphQL
+* GraphQL Tools
 * WordPress REST API
-* Apollo Server
 
 Whether you are coming from its predecessor or not, you still can pick up and make use of *Advanced Nuxt.js Web Development* independently. Just like its predecessor, this course is more about using Nuxt.js to connect and communicate with other Node.js and PHP applications remotely, such as Node.js HTTP applications, WordPress, and Apollo (GraphQL server). With this approach, you can keep your Nuxt.js applications as "thin" as possible while leveraging modern server-side technologies and applications. *Advanced Nuxt.js Web Development* is more focused on this idea than its predecessor. Hence, purely Vue.js-related skills are not covered in this course, such as:
 
@@ -116,9 +118,7 @@ If you are also interested in the preceding general knowledge and skills for you
 
 * Create HMR web servers and GraphQL servers using Vite and Node.js HTTP API for Nuxt.js applications
 
-* Create HMR GraphQL servers with Apollo and WordPress REST API for Nuxt.js applications
-
-* Create GraphQL APIs with Gridsome and Markdown documents for Nuxt.js applications
+* Create HMR GraphQL servers with Node.js HTTP API and WordPress REST API for Nuxt.js applications
 
 * Fetch data using GraphQL queries in Nuxt.js applications
 
@@ -128,12 +128,10 @@ If you are also interested in the preceding general knowledge and skills for you
 
 * Chapter 1. Introducing Advanced Nuxt Web Development
 
-    Get to know the abstract of this course, who it is for, and what it will cover, as well as the course requirements and where to download the example code files. Get to know Composition API and its benefits comparing to Option API. Start a Nuxt project with Nuxi (Nuxt scaffolding tool). Explore Nuxt's project structure such as the `/pages/` and `/assets/` directories. Learn to customize your Nuxt app with the `nuxt.config` and `.env` files.
+    Get to know types of apps and find out where Nuxt falls in line with. Start a Nuxt project with Nuxi (Nuxt scaffolding tool). Explore Nuxt's project structure such as the `/server/` and `/public/` directories. Learn about customizing your Nuxt app with the `nuxt.config` file.
 
-    * Knowing the Course
-    * Migrating to Composition API from Option API
     * Knowing Nuxt and Starting Nuxt projects
-    * Exploring the Nuxt Project Directory Structure 
+    * Understanding the Nuxt Project Directory Structure 
     * Making Custom Configurations in Nuxt Projects
 
 * Chapter 2. Creating Pages, Layouts, Composables, Plugins, Utilities, and Middleware
@@ -142,8 +140,8 @@ If you are also interested in the preceding general knowledge and skills for you
 
     * Creating Static and Dynamic Routes
     * Creating Static and Dynamic Layouts
-    * Creating Composables and Utilities
     * Creating Plugins and Middleware
+    * Creating Composables and Utilities
 
 * Chapter 3. Managing Assets and Adding UI Frameworks
 
@@ -156,7 +154,7 @@ If you are also interested in the preceding general knowledge and skills for you
 
 * Chapter 4. Fetching Data and Handling Errors
 
-    Fetch data from remote APIs using the the `useFetch` Nuxt API. Handle HTTP errors (e.g. 404 and 500 errors) with the `showError` Nuxt API and the `error.vue` file for unknown routes, internal server errors, and JavaScript default errors during development and runtime.
+    Fetch data from remote APIs using the `useFetch` Nuxt API. Handle HTTP errors (e.g. 404 and 500 errors) with the `showError` Nuxt API and the `error.vue` file for unknown routes, internal server errors, and JavaScript default errors during development and runtime.
 
     * Fetching Data with `useFetch`
     * Creating and Handling HTTP Errors
@@ -185,9 +183,9 @@ If you are also interested in the preceding general knowledge and skills for you
     Create Hot Module Replacement (HMR) Node.js apps with Vite, Node.js HTTP API, and `find-my-way` HTTP router. Create an HMR Node.js app with MySQL database and MongoDB database. Enable CORS in HMR Node.js apps for integrating with your Nuxt app. Create a real-time Nuxt app with RethinkDB and manage your app data with the RethinkDB database, Socket.IO, and the HMR Node.js app.
 
     * Creating HMR Node.js Apps with Vite and Node.js HTTP API
-    * Managing Data with MySQL Database
-    * Managing Data with MongoDB Database
-    * Managing Real-time Data with RethinkDB Database
+    * Managing Data with MySQL
+    * Managing Data with MongoDB
+    * Managing Real-time Data with RethinkDB
 
 * Chapter 8. Managing Database with PHP Apps for Nuxt
 
@@ -197,14 +195,13 @@ If you are also interested in the preceding general knowledge and skills for you
     * Managing Data with PHP PSR Apps
     * Managing SEO Meta and Open Graph Meta Dynamically with WordPress
 
-* Chapter 9. Building GraphQL Layers with MongoDB, WordPress, Gridsome and Markdown Documents for Nuxt
+* Chapter 9. Building GraphQL Layers with MongoDB, WordPress, and GraphQL Tools for Nuxt
 
-    Introduce GraphQL and its benefits. Create HMR GraphQL apps with Apollo Server, Node.js HTTP API, MongoDB, an WordPress for your Nuxt app. Use Gridsome and Markdown documents as the GraphQL server and database for your Nuxt app. Fetch data from GraphQL servers using GraphQL queries in your Nuxt apps. 
+    Introduce GraphQL and its benefits. Create HMR GraphQL apps with GraphQL Tools, Node.js HTTP API, MongoDB, an WordPress for your Nuxt app. Fetch data from GraphQL servers using GraphQL queries in your Nuxt apps. 
 
-    * Introducing GraphQL
-    * Creating GraphQL Servers with MongoDB Database and Node.js HTTP API
-    * Creating GraphQL Servers with WordPress REST APIs and Node.js HTTP API
-    * Creating GraphQL Servers with Gridsome and Markdown Documents
+    * Introducing GraphQL and Understanding GraphQL Schema
+    * Creating GraphQL Servers with MongoDB and Node.js HTTP API
+    * Creating GraphQL Servers with WordPress and Node.js HTTP API
 
 * Chapter 10. Creating SSG Sites with Nuxt and WordPress and Going Further
 

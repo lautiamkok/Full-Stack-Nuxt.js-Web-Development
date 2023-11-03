@@ -2,6 +2,7 @@
   <h2>
     Shop
   </h2>
+  {{ store.cart }}
   <ul v-if="!error">
     <button @click="store.empty">
       Empty Cart

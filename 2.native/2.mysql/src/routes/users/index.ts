@@ -1,38 +1,42 @@
 'use strict'
 
 export default ctxHandler(async () => {
-  const { pool } = useMysql()
-  const query = sql(`
+  const { pool } = await useMariadb()
+  const query = toSql(`
     SELECT 
       'id', 
       'name', 
       'slug', 
       'created_on', 
       'updated_on' 
-    FROM 'user'
+    FROM 'users'
   `)
 
-  return await pool.query(query)
+  const rows = await pool.query(query)
+  pool.end()
+  
+  return rows
 })
 
 // A long option:
 // export default async (req, res) => {
-//   const { pool } = useMysql()
+//   const { pool } = await useMysql()
 
 //   let data = null
 //   let statusCode = 200
 //   try {
-//     const query = sql(`
+//     const query = toSql(`
 //       SELECT 
 //         'id', 
 //         'name', 
 //         'slug', 
 //         'created_on', 
 //         'updated_on' 
-//       FROM 'user'
+//       FROM 'users'
 //     `)
 
-//     data = await pool.query(query)
+//     const [rows, fields] = await pool.query(query)
+//     data = rows
 //   } catch (e) {
 //     statusCode = 500
 //     data = {

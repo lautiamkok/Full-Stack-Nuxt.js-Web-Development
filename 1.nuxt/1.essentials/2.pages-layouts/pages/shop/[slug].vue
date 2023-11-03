@@ -12,9 +12,12 @@
 
 <script setup>
 const route = useRoute()
-const layout = ref(null)
-const title = ref(null)
-const contents = ref(null)
+const product = reactive({
+  title: null,
+  contents: null,
+  layout: null
+})
+let { title, contents, layout } = toRefs(product)
 
 // Create a dummy data of your shop.
 const posts = [
@@ -38,13 +41,13 @@ const posts = [
 ]
 
 // Find the requested product from products.
-let found = posts.find(post => post.slug === route.params.slug)
+const found = posts.find(post => post.slug === route.params.slug)
 
 // Populate the data.
-title.value = found.title
-contents.value = found.contents
+title = found.title
+contents = found.contents
 
 // Change the per-page layout in this component only.
 // https://nuxt.com/docs/guide/directory-structure/layouts#overriding-a-layout-on-a-per-page-basis
-layout.value = found.layout
+layout = found.layout
 </script>

@@ -3,6 +3,10 @@
 // https://nitro.unjs.io/guide/introduction/routing#specific-request-method
 // https://nuxt.com/docs/guide/directory-structure/server#matching-http-method
 // https://nuxt.com/docs/guide/directory-structure/server#handling-requests-with-body
+// Add a new user:
+// $ curl -X POST http://localhost:3000/api/users/create/one \
+// -H "Content-Type: application/json" \
+// -d '{"name": "John", "slug": "john"}'
 export default eventHandler(async event => {
   const body = await readBody(event)
 
@@ -47,7 +51,7 @@ export default eventHandler(async event => {
     createdAt: timestamp
   }
 
-  const db = makeDb()
+  const db = connectDb()
   const users = await db.getItem('users') || []
   users.push(user)
   await db.setItem('users', users)

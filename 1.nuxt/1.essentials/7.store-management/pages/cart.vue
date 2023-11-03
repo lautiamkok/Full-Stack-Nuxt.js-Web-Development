@@ -14,9 +14,9 @@
    <button @click="store.empty">
     Empty Cart
   </button>
-  <ul v-if="items.length > 0">
+  <ul v-if="store.cart.length > 0">
    <li
-      v-for="item in items"
+      v-for="item in store.cart"
       v-bind:key="item.id"
     >
       <cart-item
@@ -28,7 +28,5 @@
 
 <script setup>
 import { useCartStore } from '@/stores/cart'
-
 const store = useCartStore()
-const { items } = useCart()
 </script>

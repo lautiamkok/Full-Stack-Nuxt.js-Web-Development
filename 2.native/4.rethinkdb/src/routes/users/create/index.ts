@@ -2,9 +2,6 @@
 
 import rdb from 'rethinkdb'
 
-// Use Node.js built-in `crypto` to generate UUIDs.
-import crypto from 'crypto'
-
 // Add a user:
 // $ curl -X POST http://localhost:5000/users/create \
 //  -H "Content-Type: application/json" \

@@ -1,6 +1,9 @@
 <template>
   <div class="grey">
-    <slot/>
+    <p>
+      light
+    </p>
+    <slot />
   </div>
 </template>
 

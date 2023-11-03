@@ -21,7 +21,7 @@
     v-model="quantity" 
     type="number" 
     min="1" 
-    max="{{ product.stock }}" 
+    v-bind:max="product.stock"
   />
   <button @click="add">
     Add to Cart

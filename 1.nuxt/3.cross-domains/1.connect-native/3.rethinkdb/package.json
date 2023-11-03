@@ -8,9 +8,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "socket.io-client": "^4.6.1"
+    "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
-    "nuxt": "^3.4.1"
+    "nuxt": "^3.7.0"
   }
 }

@@ -8,7 +8,7 @@ import crypto from 'crypto'
 //  -H "Content-Type: application/json" \
 //  -d '{"name": "John", "slug": "john"}'
 export default ctxHandler(async ctx => {
-  const { pool } = useMysql()
+  const { pool } = await useMariadb()
   const body = await normalizeBody(ctx.req)
 
   if (body.name === undefined) {
@@ -48,8 +48,8 @@ export default ctxHandler(async ctx => {
     updatedAt: timestamp
   }
 
-  const query = sql(`
-    INSERT INTO 'user'(
+  const query = toSql(`
+    INSERT INTO 'users'(
       'id',
       'name',
       'slug',
@@ -64,7 +64,10 @@ export default ctxHandler(async ctx => {
     )
   `)
 
-  return await pool.query(query)
+  const result = await pool.query(query)
+  pool.end()
+
+  return result
 })
 
 // A long option:
@@ -112,8 +115,8 @@ export default ctxHandler(async ctx => {
 //       updatedAt: timestamp
 //     }
 
-//     const query = sql(`
-//       INSERT INTO 'user'(
+//     const query = toSql(`
+//       INSERT INTO 'users'(
 //         'id',
 //         'name',
 //         'slug',

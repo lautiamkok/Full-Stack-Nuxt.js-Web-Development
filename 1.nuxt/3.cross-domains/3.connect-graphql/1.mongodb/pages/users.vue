@@ -16,7 +16,6 @@
 </template>
 
 <script setup>
-const runtimeConfig = useRuntimeConfig()
 const users = ref()
 const query = `
   query {
@@ -31,9 +30,6 @@ const query = `
 `
 const { data , error } = await useF3tch('/', {
   method: 'POST',
-
-  // No need to use JSON.stringify to stringify user reactive object if using
-  // `ofetch`.
   body: { query }
 })
 

@@ -4,13 +4,9 @@ import util from 'util'
 import mysql from 'mysql'
 
 // Rather than creating and managing connections one-by-one, this module also
-// provides built-in connection pooling using mysql.createPool(config). A pool
-// is a place where connections get stored. When you request a connection from a
-// pool, you are either given a connection that is currently not being used or a
-// new connection. If you’re at the connection limit, it will wait until a
-// connection is available before it continues.
+// provides built-in connection pooling using mysql.createPool
+// (config). 
 // https://www.npmjs.com/package/mysql#pooling-connections
-// https://en.wikipedia.org/wiki/Connection_pool
 const pool = mysql.createPool({
   connectionLimit: 10,
   host: import.meta.env.VITE_DB_HOST,
@@ -21,7 +17,6 @@ const pool = mysql.createPool({
 
 export default () => {
   // Ping database to check for common exception errors.
-  // ref: https://medium.com/@mhagemann/create-a-mysql-database-middleware-with-node-js-8-and-async-await-6984a09d49f4
   pool.getConnection((err, connection) => {
     if (err) {
       if (err.code === 'PROTOCOL_CONNECTION_LOST') {

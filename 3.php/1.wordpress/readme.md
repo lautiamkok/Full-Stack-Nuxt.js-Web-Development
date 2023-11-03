@@ -7,7 +7,7 @@
 1. Install dependencies:
 
     ``` bash
-    $ cd /path/to/your/wordpress/wp-content/themes/bareboneapi-v1/
+    $ cd /path/to/your/wordpress/wp-content/themes/headlessapi-v1/
     $ composer install
     ```
 
@@ -15,7 +15,7 @@
 
     ``` bash
     $ cd /path/to/your/wordpress/
-    $ php -S 0.0.0.0:4000 -t public
+    $ php -S 0.0.0.0:4000
     ```
 
 3. Or, use Apache to create a 4000 port to run the app:
@@ -64,7 +64,7 @@ Use the following usernames and passwords to log in the WordPress admin to manag
     admin
 
     Password:  
-    !La2ecd5IqQI4m0@WE
+    x32LZ**kpSOzqcbE!3
 
     Email:  
     lau.thiamkok@yahoo.co.uk

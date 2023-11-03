@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 // Bootstrap the app environment.
-chdir(dirname(__DIR__));
-require_once 'vendor/autoload.php';
+chdir(dirname(__DIR__) . '/src');
+require_once '../vendor/autoload.php';
 
 $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER, $_GET, $_POST, $_COOKIE, $_FILES
@@ -16,10 +16,10 @@ $router = new League\Route\Router;
 // https://github.com/thephpleague/route/issues/165
 try {
     // Register all middleware.
-    require 'middleware.php';
+    require './middleware.php';
 
     // Register all routes.
-    require 'router.php';
+    require './router.php';
 
     $response = $router->dispatch($request);
 } catch(Exception $exception) {

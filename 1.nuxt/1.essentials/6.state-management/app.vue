@@ -5,8 +5,10 @@
 </template>
 
 <script setup>
-// Set a `message` state to be shared between the server and client across components.
+const countB = ref(0)
+provide('count', countB)
+
+// Set a `counter` state to be shared between the server and client across components.
 // https://nuxt.com/docs/getting-started/state-management
-const message = 'Hello World!'
-useState('message', () => message)
+const countC = useState('count', () => 0)
 </script>

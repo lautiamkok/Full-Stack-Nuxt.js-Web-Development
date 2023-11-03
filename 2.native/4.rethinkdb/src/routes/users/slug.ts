@@ -3,7 +3,7 @@
 import rdb from 'rethinkdb'
 
 // Get the user by slug.
-export default ctxHandler(async () => {
+export default ctxHandler(async (ctx) => {
   const { connect } = useRethink()
   const slug = ctx.params.slug
 
