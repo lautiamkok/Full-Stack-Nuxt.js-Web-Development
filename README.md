@@ -1,15 +1,15 @@
-# Advanced Nuxt.js Web Development
+# Advanced Nuxt Web Development
 
-> Build server-side rendering (SSR) and static-generated (SSG) Vue.js applications using Nuxt.js and Composition API
+> Build server-side rendering (SSR) and static-generated (SSG) Vue.js applications using Nuxt and Composition API
 
-This is the code repository for *Advanced Nuxt.js Web Development*, coming soon in 2023, authored by [Lau Tiam Kok](https://lauthiamkok.net/). For the time being, if you are interested in this course and have questions, please visit [lauthiamkok.net](https://lauthiamkok.net) to contact me. Otherwise, feel free to sponsor this repository to keep it going and maintained through the following channels:
+This is the code repository for *Advanced Nuxt Web Development*, coming soon in 2023, authored by [Lau Tiam Kok](https://lauthiamkok.net/). For the time being, if you are interested in this course and have questions, please visit [lauthiamkok.net](https://lauthiamkok.net) to contact me. Otherwise, feel free to sponsor this repository to keep it going and maintained through the following channels:
 
 * [Open Collective](https://opencollective.com/lautiamkok)
 * [Ko-fi](https://ko-fi.com/lautiamkok)
 
 ## Course Overview
 
-This repository is the successor of [*Hands-on Nuxt.js Web Development*](https://github.com/PacktPublishing/Hands-on-Nuxt.js-Web-Development). You can purchase the book of *Hands-on Nuxt.js Web Development* from [packtpub.com](https://www.packtpub.com/product/hands-on-nuxtjs-web-development/9781789952698). If you have owned the book already, which is based on Nuxt.js 2, and would like to upgrade to Nuxt.js 3 and update the old NPM packages, frameworks, and tools, please use this repository to do so. However, bear in mind that the following dependencies and skills that are covered in *Hands-on Nuxt.js Web Development* are not included in this repository and course:
+This repository is the successor of [*Hands-on Nuxt Web Development*](https://github.com/PacktPublishing/Hands-on-Nuxt.js-Web-Development). You can purchase the book of *Hands-on Nuxt Web Development* from [packtpub.com](https://www.packtpub.com/product/hands-on-nuxtjs-web-development/9781789952698). If you have owned the book already, which is based on Nuxt 2, and would like to upgrade to Nuxt 3 and update the old NPM packages, frameworks, and tools, please use this repository to do so. However, bear in mind that the following dependencies and skills that are covered in *Hands-on Nuxt Web Development* are not included in this repository and course:
 
 * Webpack
 * Backpack
@@ -34,7 +34,7 @@ This repository is the successor of [*Hands-on Nuxt.js Web Development*](https:/
 * [Nuxt modules](https://nuxt.com/docs/guide/going-further/modules)
 * [Testing](https://nuxt.com/docs/getting-started/testing)
 
-Testing in Nuxt.js 3 is still in development. The APIs and behaviors for testing your Nuxt.js applications may change in the near future. So testing will not be included in this course. For more info about testing in Nuxt.js 3, please check it out at [https://nuxt.com/docs/getting-started/testing](https://nuxt.com/docs/getting-started/testing). However, the following NPM packages, frameworks, and tools are included and used tightly in this course (items marked with * are not covered in *Hands-on Nuxt.js Web Development*):
+Testing in Nuxt 3 is still in development. The APIs and behaviors for testing your Nuxt applications may change in the near future. So testing will not be included in this course. For more info about testing in Nuxt 3, please check it out at [https://nuxt.com/docs/getting-started/testing](https://nuxt.com/docs/getting-started/testing). However, the following NPM packages, frameworks, and tools are included and used tightly in this course (items marked with * are not covered in *Hands-on Nuxt Web Development*):
 
 * Vite*
 * Windi CSS*
@@ -53,7 +53,7 @@ Testing in Nuxt.js 3 is still in development. The APIs and behaviors for testing
 * GraphQL Tools
 * WordPress REST API
 
-Whether you are coming from its predecessor or not, you still can pick up and make use of *Advanced Nuxt.js Web Development* independently. Just like its predecessor, this course is more about using Nuxt.js to connect and communicate with other Node.js and PHP applications remotely, such as Node.js HTTP applications, WordPress, and Apollo (GraphQL server). With this approach, you can keep your Nuxt.js applications as "thin" as possible while leveraging modern server-side technologies and applications. *Advanced Nuxt.js Web Development* is more focused on this idea than its predecessor. Hence, purely Vue.js-related skills are not covered in this course, such as:
+Whether you are coming from its predecessor or not, you still can pick up and make use of *Advanced Nuxt Web Development* independently. Just like its predecessor, this course is more about using Nuxt to connect and communicate with other Node.js and PHP applications remotely, such as Node.js HTTP applications, WordPress, and GraphQL servers. With this approach, you can keep your Nuxt applications as "thin" as possible while leveraging modern server-side technologies and applications. *Advanced Nuxt Web Development* is more focused on this idea than its predecessor. Hence, purely Vue.js-related skills are not covered in this course, such as:
 
 * Passing down data to child components with `defineProps`
 * Emitting data up to parent components with `defineEmits`
@@ -62,7 +62,7 @@ Whether you are coming from its predecessor or not, you still can pick up and ma
 * Validating form inputs
 * Creating Vue.js SSR applications using Vite SSR
 
-If you are also interested in the preceding Vue.js essential knowledge and skills, please consider [*Advanced Vue.js Web Development*](https://github.com/lautiamkok/Advanced-Vue.js-Web-Development) too in your learning journey. You can check out [this page](https://lauthiamkok.net/origins/digital/advanced-vuejs-web-development) for how to purchase the course guide. Most importantly, *Advanced Nuxt.js Web Development* is a concise version of its predecessor. Hence, the basic and entry-level knowledge and skills are not included in this course, such as:
+If you are also interested in the preceding Vue.js essential knowledge and skills, please consider [*Advanced Vue.js Web Development*](https://github.com/lautiamkok/Advanced-Vue.js-Web-Development) too in your learning journey. You can check out [this page](https://lauthiamkok.net/origins/digital/advanced-vuejs-web-development) for how to purchase the course guide. Most importantly, *Advanced Nuxt Web Development* is a concise version of its predecessor. Hence, the basic and entry-level knowledge and skills are not included in this course, such as:
 
 * What is a Vue component?
 * Creating custom Vue transitions
@@ -79,8 +79,6 @@ If you are also interested in the preceding Vue.js essential knowledge and skill
 * The token authentication flow
 * Understanding HTTP messages 
 * Introducing PHP and PSRs (PHP Standards Recommendations)
-* Understanding the GraphQL schema and resolvers
-* Understanding GraphQL default resolvers
 * Understanding classic SPAs and Nuxt SPAs
 * Developing a SPA with Nuxt
 * Deploying a SPA and deploying to GitHub Pages
@@ -88,11 +86,11 @@ If you are also interested in the preceding Vue.js essential knowledge and skill
 * Installing and securing MySQL, MongoDB, and RethinkDB
 * Installing and configuring Apache, PHP, and WordPress
 
-If you are also interested in the preceding general knowledge and skills for your Nuxt.js applications, please consider [*Hands-on Nuxt.js Web Development*](https://www.packtpub.com/product/hands-on-nuxtjs-web-development/9781789952698) too in your learning journey. *Advanced Nuxt.js Web Development* assumes you have the preceding basic knowledge and skills already. Composition API and `<script setup>` are used solely throughout the course. In other words, [Options API](https://vuejs.org/api/#options-api) and `<script>` are considered basic in this course so they are opted out entirely from the course.
+If you are also interested in the preceding general knowledge and skills for your Nuxt applications, please consider [*Hands-on Nuxt Web Development*](https://www.packtpub.com/product/hands-on-nuxtjs-web-development/9781789952698) too in your learning journey. *Advanced Nuxt Web Development* assumes you have the preceding basic knowledge and skills already. Composition API and `<script setup>` are used solely throughout the course. In other words, [Options API](https://vuejs.org/api/#options-api) and `<script>` are considered basic in this course so they are opted out entirely from the course.
 
 ## Takeaway Skills
 
-* Create SSR and SSG Vue.js applications using Nuxt.js and Composition API
+* Create SSR and SSG Vue.js applications using Nuxt and Composition API
 
 * Create dynamic pages and layouts
 
@@ -106,23 +104,23 @@ If you are also interested in the preceding general knowledge and skills for you
 
 * Manage document head tags for SEO and Open Graph
 
-* Create REST APIs with Node.js HTTP API, MongoDB, and MySQL for Nuxt.js applications
+* Create REST APIs with Node.js HTTP API, MongoDB, and MySQL for Nuxt applications
 
-* Create real-time Nuxt.js applications with Socket.IO and RethinkDB
+* Create real-time Nuxt applications with Socket.IO and RethinkDB
 
-* Create a headless CMS using WordPress for Nuxt.js applications
+* Create a headless CMS using WordPress for Nuxt applications
 
-* Connect WordPress and generate static pages with Nuxt.js
+* Connect WordPress and generate static pages with Nuxt
 
-* Stream and download remote images from WordPress for static-generated sites in Nuxt.js projects
+* Stream and download remote images from WordPress for static-generated sites in Nuxt projects
 
-* Create HMR web servers and GraphQL servers using Vite and Node.js HTTP API for Nuxt.js applications
+* Create HMR web servers and GraphQL servers using Vite and Node.js HTTP API for Nuxt applications
 
-* Create HMR GraphQL servers with Node.js HTTP API and WordPress REST API for Nuxt.js applications
+* Create HMR GraphQL servers with Node.js HTTP API and WordPress REST API for Nuxt applications
 
-* Fetch data using GraphQL queries in Nuxt.js applications
+* Fetch data using GraphQL queries in Nuxt applications
 
-* Handle HTTP errors (e.g. 404 and 500 errors) in Nuxt.js applications, Node.js applications, and PHP applications.
+* Handle HTTP errors (e.g. 404 and 500 errors) in Nuxt applications, Node.js applications, and PHP applications.
 
 ## Chapters and Lessons
 
