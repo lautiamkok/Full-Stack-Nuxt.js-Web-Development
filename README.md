@@ -2,7 +2,7 @@
 
 > Build full-stack server-side rendering (SSR) and static-generated (SSG) Vue.js applications using Nuxt.js (a.k.a. Nuxt), Node.js, and Composition API
 
-This is the code repository for [***Full-Stack Nuxt.js Web Development***](https://lauthiamkok.net/origins/digital/advanced-nuxtjs-web-development), published in January 2024, authored by [Lau Tiam Kok](https://lauthiamkok.net/).
+This is the code repository for [***Full-Stack Nuxt.js Web Development***](https://lauthiamkok.net/origins/digital/full-stack-nuxtjs-web-development), published in January 2024, authored by [Lau Tiam Kok](https://lauthiamkok.net/).
 
 ## Course Overview
 
@@ -125,7 +125,7 @@ This is the code repository for [***Full-Stack Nuxt.js Web Development***](https
     * Lesson 2. Streaming Assets from WordPress for Static Sites
     * Lesson 3. Going Further and Knowing Your Options
 
-If you are interested in this course, please check out [this page](https://lauthiamkok.net/origins/digital/advanced-nuxtjs-web-development) for how to purchase the course guide. Otherwise, feel free to sponsor this repository to keep it going and maintained through the following channels:
+If you are interested in this course, please check out [this page](https://lauthiamkok.net/origins/digital/full-stack-nuxtjs-web-development) for how to purchase the course guide. Otherwise, feel free to sponsor this repository to keep it going and maintained through the following channels:
 
 * [Open Collective](https://opencollective.com/lautiamkok)
 * [Ko-fi](https://ko-fi.com/lautiamkok)
