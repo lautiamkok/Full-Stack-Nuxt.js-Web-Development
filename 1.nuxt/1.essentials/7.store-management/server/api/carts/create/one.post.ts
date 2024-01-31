@@ -43,5 +43,8 @@ export default eventHandler(async event => {
   // set the data again.
   // EX seconds -- Set the specified expire time, in seconds.
   // https://redis.io/commands/set/
-  return await client.set(key, JSON.stringify(body), { 'EX': expire })
+  const result = await client.set(key, JSON.stringify(body), { 'EX': expire })
+  client.quit()
+
+  return result
 })

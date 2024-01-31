@@ -15,5 +15,8 @@ export default eventHandler(async event => {
   client.on('error', err => console.log('Redis Client Error', err))
   await client.connect()
 
-  return JSON.parse(await client.get(id))
+  const data = JSON.parse(await client.get(id))
+  client.quit()
+
+  return data
 })
